@@ -74,6 +74,11 @@ export * from './events/aksel/modal/apnet';
 export * from './events/aksel/modal/lukket';
 export * from './events/aksel/monthpicker/maned-valgt';
 export * from './events/navigere/navigere';
+export * from './events/navigere/kopier-lenke';
+export * from './events/navigere/chat-apnet';
+export * from './events/navigere/ring-oss';
+export * from './events/navigere/video-start';
+export * from './events/navigere/video-stopp';
 export * from './events/aksel/select/nedtrekksliste-valg-endret';
 export * from './events/aksel/radio/valg-endret';
 export * from './events/aksel/table/sortering-endret';
@@ -152,6 +157,11 @@ import { MODAL_APNET_EVENT } from './events/aksel/modal/apnet';
 import { MODAL_LUKKET_EVENT } from './events/aksel/modal/lukket';
 import { MONTHPICKER_MANED_VALGT_EVENT } from './events/aksel/monthpicker/maned-valgt';
 import { NAVIGERE_EVENT } from './events/navigere/navigere';
+import { KOPIER_LENKE_EVENT } from './events/navigere/kopier-lenke';
+import { CHAT_APNET_EVENT } from './events/navigere/chat-apnet';
+import { RING_OSS_EVENT } from './events/navigere/ring-oss';
+import { VIDEO_START_EVENT } from './events/navigere/video-start';
+import { VIDEO_STOPP_EVENT } from './events/navigere/video-stopp';
 import { NEDTREKKSLISTE_VALG_ENDRET_EVENT } from './events/aksel/select/nedtrekksliste-valg-endret';
 import { RADIO_VALG_ENDRET_EVENT } from './events/aksel/radio/valg-endret';
 import { TABELL_RAD_VALGT_EVENT } from './events/aksel/table/rad-valgt';
@@ -281,6 +291,16 @@ import type { MonthPickerManedValgtEvent } from './events/aksel/monthpicker/mane
 import type { MonthPickerManedValgtProperties } from './events/aksel/monthpicker/maned-valgt';
 import type { NavigereEvent } from './events/navigere/navigere';
 import type { NavigereProperties } from './events/navigere/navigere';
+import type { KopierLenkeEvent } from './events/navigere/kopier-lenke';
+import type { KopierLenkeProperties } from './events/navigere/kopier-lenke';
+import type { ChatApnetEvent } from './events/navigere/chat-apnet';
+import type { ChatApnetProperties } from './events/navigere/chat-apnet';
+import type { RingOssEvent } from './events/navigere/ring-oss';
+import type { RingOssProperties } from './events/navigere/ring-oss';
+import type { VideoStartEvent } from './events/navigere/video-start';
+import type { VideoStartProperties } from './events/navigere/video-start';
+import type { VideoStoppEvent } from './events/navigere/video-stopp';
+import type { VideoStoppProperties } from './events/navigere/video-stopp';
 import type { NedtrekkslisteValgEndretEvent } from './events/aksel/select/nedtrekksliste-valg-endret';
 import type { NedtrekkslisteValgEndretProperties } from './events/aksel/select/nedtrekksliste-valg-endret';
 import type { RadioValgEndretEvent } from './events/aksel/radio/valg-endret';
@@ -419,6 +439,16 @@ export const Events = {
   MONTHPICKER_MANED_VALGT: MONTHPICKER_MANED_VALGT_EVENT,
   /** Navigasjon / lenke-klikk */
   NAVIGERE: NAVIGERE_EVENT,
+  /** Kopier lenke */
+  KOPIER_LENKE: KOPIER_LENKE_EVENT,
+  /** Chat åpnet */
+  CHAT_APNET: CHAT_APNET_EVENT,
+  /** Ring oss */
+  RING_OSS: RING_OSS_EVENT,
+  /** Video start */
+  VIDEO_START: VIDEO_START_EVENT,
+  /** Video stopp */
+  VIDEO_STOPP: VIDEO_STOPP_EVENT,
   /** Nedtrekksliste verdi endret */
   NEDTREKKSLISTE_VALG_ENDRET: NEDTREKKSLISTE_VALG_ENDRET_EVENT,
   /** Radio valg endret */
@@ -548,6 +578,11 @@ export type EventPropertiesMap = {
   [FILTERVALG_EVENT]: FiltervalgProperties;
   [LAST_NED_EVENT]: LastNedProperties;
   [NAVIGERE_EVENT]: NavigereProperties;
+  [KOPIER_LENKE_EVENT]: KopierLenkeProperties;
+  [CHAT_APNET_EVENT]: ChatApnetProperties;
+  [RING_OSS_EVENT]: RingOssProperties;
+  [VIDEO_START_EVENT]: VideoStartProperties;
+  [VIDEO_STOPP_EVENT]: VideoStoppProperties;
   [SKJEMA_APNET_EVENT]: SkjemaApnetProperties;
   [SKJEMA_FULLFORT_EVENT]: SkjemaFullfortProperties;
   [SKJEMA_INNSENDING_FEILET_EVENT]: SkjemaInnsendingFeiletProperties;
