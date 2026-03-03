@@ -9,6 +9,8 @@ export interface NavigereProperties extends BaseProperties {
   lenketekst: string;
   /** Måladressen (URL) */
   destinasjon: string;
+  /** Lenkegruppe/kategori */
+  lenkegruppe?: string;
 }
 
 export type NavigereEvent = {
