@@ -9,6 +9,8 @@ export interface FiltervalgProperties extends BaseProperties {
   kategori?: string;
   /** Navnet på filteret som ble valgt */
   filternavn?: string;
+  /** Underkategori / sub-filter som ble valgt */
+  subFilter?: string;
 }
 
 export type FiltervalgEvent = {
