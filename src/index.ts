@@ -79,6 +79,9 @@ export * from './events/navigere/chat-apnet';
 export * from './events/navigere/ring-oss';
 export * from './events/navigere/video-start';
 export * from './events/navigere/video-stopp';
+export * from './events/navigere/vis-flere-treff';
+export * from './events/navigere/sok';
+export * from './events/navigere/resultat-klikk';
 export * from './events/aksel/select/nedtrekksliste-valg-endret';
 export * from './events/aksel/radio/valg-endret';
 export * from './events/aksel/table/sortering-endret';
@@ -162,6 +165,9 @@ import { CHAT_APNET_EVENT } from './events/navigere/chat-apnet';
 import { RING_OSS_EVENT } from './events/navigere/ring-oss';
 import { VIDEO_START_EVENT } from './events/navigere/video-start';
 import { VIDEO_STOPP_EVENT } from './events/navigere/video-stopp';
+import { VIS_FLERE_TREFF_EVENT } from './events/navigere/vis-flere-treff';
+import { SOK_NAVNO_EVENT } from './events/navigere/sok';
+import { RESULTAT_KLIKK_EVENT } from './events/navigere/resultat-klikk';
 import { NEDTREKKSLISTE_VALG_ENDRET_EVENT } from './events/aksel/select/nedtrekksliste-valg-endret';
 import { RADIO_VALG_ENDRET_EVENT } from './events/aksel/radio/valg-endret';
 import { TABELL_RAD_VALGT_EVENT } from './events/aksel/table/rad-valgt';
@@ -301,6 +307,12 @@ import type { VideoStartEvent } from './events/navigere/video-start';
 import type { VideoStartProperties } from './events/navigere/video-start';
 import type { VideoStoppEvent } from './events/navigere/video-stopp';
 import type { VideoStoppProperties } from './events/navigere/video-stopp';
+import type { VisFlereTreffEvent } from './events/navigere/vis-flere-treff';
+import type { VisFlereTreffProperties } from './events/navigere/vis-flere-treff';
+import type { SokNavnoEvent } from './events/navigere/sok';
+import type { SokNavnoProperties } from './events/navigere/sok';
+import type { ResultatKlikkEvent } from './events/navigere/resultat-klikk';
+import type { ResultatKlikkProperties } from './events/navigere/resultat-klikk';
 import type { NedtrekkslisteValgEndretEvent } from './events/aksel/select/nedtrekksliste-valg-endret';
 import type { NedtrekkslisteValgEndretProperties } from './events/aksel/select/nedtrekksliste-valg-endret';
 import type { RadioValgEndretEvent } from './events/aksel/radio/valg-endret';
@@ -449,6 +461,12 @@ export const Events = {
   VIDEO_START: VIDEO_START_EVENT,
   /** Video stopp */
   VIDEO_STOPP: VIDEO_STOPP_EVENT,
+  /** Vis flere treff */
+  VIS_FLERE_TREFF: VIS_FLERE_TREFF_EVENT,
+  /** Søk */
+  SOK_NAVNO: SOK_NAVNO_EVENT,
+  /** Resultat-klikk */
+  RESULTAT_KLIKK: RESULTAT_KLIKK_EVENT,
   /** Nedtrekksliste verdi endret */
   NEDTREKKSLISTE_VALG_ENDRET: NEDTREKKSLISTE_VALG_ENDRET_EVENT,
   /** Radio valg endret */
@@ -583,6 +601,9 @@ export type EventPropertiesMap = {
   [RING_OSS_EVENT]: RingOssProperties;
   [VIDEO_START_EVENT]: VideoStartProperties;
   [VIDEO_STOPP_EVENT]: VideoStoppProperties;
+  [VIS_FLERE_TREFF_EVENT]: VisFlereTreffProperties;
+  [SOK_NAVNO_EVENT]: SokNavnoProperties;
+  [RESULTAT_KLIKK_EVENT]: ResultatKlikkProperties;
   [SKJEMA_APNET_EVENT]: SkjemaApnetProperties;
   [SKJEMA_FULLFORT_EVENT]: SkjemaFullfortProperties;
   [SKJEMA_INNSENDING_FEILET_EVENT]: SkjemaInnsendingFeiletProperties;
