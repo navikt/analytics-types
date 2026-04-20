@@ -1,9 +1,9 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 import type {
   ActionMenuInteraksjonsMetode,
   ActionMenuSti,
   ActionMenuValgType
-} from './types';
+} from './types.js';
 
 /**
  * ActionMenu valg valgt - trigges når et valg i menyen aktiveres

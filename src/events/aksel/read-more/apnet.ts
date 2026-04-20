@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * Les mer åpnet - trigges når en ReadMore utvides
  */

@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * Fane byttet - trigges når bruker skifter fane
  */

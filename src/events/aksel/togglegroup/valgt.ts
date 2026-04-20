@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * ToggleGroup valgt - trigges når bruker velger en toggle i gruppen
  */

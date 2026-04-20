@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * Tooltip lukket - trigges når tooltipen skjules (bruker flytter mus/fokus bort)
  */

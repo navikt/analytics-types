@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * Table rad utvidet - trigges når en utvidbar rad ekspanderes
  */

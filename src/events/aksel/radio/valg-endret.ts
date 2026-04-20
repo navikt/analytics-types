@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * Radio valg endret - trigges når bruker velger et nytt alternativ
  */

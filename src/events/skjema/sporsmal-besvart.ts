@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../types';
+import type { BaseProperties } from '../types.js';
 /**
  * Skjema spørsmål besvart-hendelse - trigges når et spørsmål i skjemaet besvares
  */

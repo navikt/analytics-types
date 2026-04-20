@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * GlobalAlert vist-hendelse - trigges når et globalt varsel vises
  */

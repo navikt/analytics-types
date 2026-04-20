@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * Alert lukket-hendelse - trigges når et varsel lukkes (krever closeButton)
  */

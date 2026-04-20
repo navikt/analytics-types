@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * InfoCard vist-hendelse - trigges når et infokort vises
  */

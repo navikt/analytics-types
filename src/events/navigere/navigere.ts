@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../types';
+import type { BaseProperties } from '../types.js';
 /**
  * Navigere-hendelse - trigges når en bruker klikker på en lenke
  */

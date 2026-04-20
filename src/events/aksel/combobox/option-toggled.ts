@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * Combobox option toggled - trigges når et alternativ velges/fjernes i combobox
  */

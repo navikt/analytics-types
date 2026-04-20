@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * Process steg klikket-hendelse - trigges når bruker klikker på et steg i prosessen (hvis interaktivt)
  */

@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * Accordion åpnet-hendelse - trigges når en accordion åpnes
  */

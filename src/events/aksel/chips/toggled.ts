@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * Chip toggled - trigges når bruker klikker på en Chips.Toggle
  */

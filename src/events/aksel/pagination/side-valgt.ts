@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * Paginering side valgt - trigges når bruker navigerer til en ny side
  */

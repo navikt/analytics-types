@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * HelpText vist - trigges når hjelpeteksten åpnes
  */

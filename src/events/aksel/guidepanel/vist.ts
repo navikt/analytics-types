@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * Guidepanel vist-hendelse - trigges når et guidepanel vises
  */

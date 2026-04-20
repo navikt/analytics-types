@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * InlineMessage vist-hendelse - trigges når en inline melding vises
  */

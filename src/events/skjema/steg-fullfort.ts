@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../types';
+import type { BaseProperties } from '../types.js';
 /**
  * Skjema steg fullført-hendelse - trigges når et steg i skjemaet fullføres
  */

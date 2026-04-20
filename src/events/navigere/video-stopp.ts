@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../types';
+import type { BaseProperties } from '../types.js';
 /**
  * Video stopp - trigges når bruker stopper en video
  */

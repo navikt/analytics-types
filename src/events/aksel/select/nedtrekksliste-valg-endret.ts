@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * Nedtrekksliste valg endret - trigges når Select endrer verdi
  */

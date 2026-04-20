@@ -1,9 +1,9 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 import type {
   ActionMenuInteraksjonsMetode,
   ActionMenuLukkAarsak,
   ActionMenuSti
-} from './types';
+} from './types.js';
 
 /**
  * ActionMenu undermeny lukket - trigges når en submeny kollapser igjen.

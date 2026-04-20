@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * Fil fjernet - trigges når en tidligere opplastet fil slettes
  */

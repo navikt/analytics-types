@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * Tabell sortering endret - trigges når bruker sorterer en kolonne
  */

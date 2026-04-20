@@ -1,5 +1,5 @@
-import type { BaseProperties } from '../../types';
-import type { ActionMenuInteraksjonsMetode, ActionMenuSti } from './types';
+import type { BaseProperties } from '../../types.js';
+import type { ActionMenuInteraksjonsMetode, ActionMenuSti } from './types.js';
 
 /**
  * ActionMenu undermeny åpnet - trigges når en submeny ekspanderes

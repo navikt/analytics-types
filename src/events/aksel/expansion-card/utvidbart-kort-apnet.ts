@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * Utvidbart kort åpnet - trigges når kortet ekspanderes
  */

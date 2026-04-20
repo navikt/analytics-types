@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * Stepper steg endret - trigges når bruker navigerer til et nytt steg
  */

@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * FormProgress steg vist - trigges når et steg i FormProgress vises
  */

@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * ErrorSummary vist - trigges når feiloppsummering vises for bruker
  */

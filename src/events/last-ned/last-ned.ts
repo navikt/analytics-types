@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../types';
+import type { BaseProperties } from '../types.js';
 /**
  * Last ned-hendelse - trigges når en bruker laster ned en fil
  */

@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * MonthPicker måned valgt - trigges når bruker velger en ny måned
  */

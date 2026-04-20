@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * Tabell rad valgt - trigges når en rad markeres eller aktiveres
  */

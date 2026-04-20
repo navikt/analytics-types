@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * Chip fjernet - trigges når bruker klikker på slett-knappen i en Chips.Removable
  */

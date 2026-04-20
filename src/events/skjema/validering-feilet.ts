@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../types';
+import type { BaseProperties } from '../types.js';
 /**
  * Skjema validering feilet-hendelse - trigges når skjemaet feiler i validering
  */

@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../types';
+import type { BaseProperties } from '../types.js';
 /**
  * Ring oss - trigges når bruker initierer et telefonsamtale
  */

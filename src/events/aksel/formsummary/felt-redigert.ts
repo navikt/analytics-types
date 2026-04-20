@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * FormSummary felt redigert - trigges når bruker velger å redigere et felt fra oppsummeringen
  */

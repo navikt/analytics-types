@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * Tag fjernet - trigges når en tag fjernes eller lukkes
  */

@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * Textarea utfylt - trigges når tekstområdet får eller mister verdi
  */

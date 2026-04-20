@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * Tooltip vist - trigges når brukeren hovrer over eller fokuserer på et element med tooltip
  */

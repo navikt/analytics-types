@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * LocalAlert lukket-hendelse - trigges når et lokalt varsel lukkes
  */

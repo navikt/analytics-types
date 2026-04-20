@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * Avkrysningsboks endret - trigges når bruker endrer tilstanden til checkboxen
  */

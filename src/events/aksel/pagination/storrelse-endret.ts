@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * Paginering størrelse endret - trigges når bruker oppdaterer antall elementer per side
  */

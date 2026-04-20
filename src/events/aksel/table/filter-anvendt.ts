@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * Table filter anvendt - trigges når bruker anvender et filter på tabellen
  */

@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../../types';
+import type { BaseProperties } from '../../types.js';
 /**
  * LinkCard klikket - trigges når brukeren aktiverer et LinkCard
  */

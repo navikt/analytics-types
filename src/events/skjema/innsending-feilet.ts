@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../types';
+import type { BaseProperties } from '../types.js';
 /**
  * Skjema innsending feilet-hendelse - trigges når innsending av skjema feiler
  */

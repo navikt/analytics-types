@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../types';
+import type { BaseProperties } from '../types.js';
 /**
  * Skjema startet-hendelse - trigges når en bruker begynner på et skjema
  */

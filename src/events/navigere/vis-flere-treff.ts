@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../types';
+import type { BaseProperties } from '../types.js';
 
 /**
  * Vis flere treff - trigges når bruker laster inn flere søkeresultater

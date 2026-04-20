@@ -1,4 +1,4 @@
-import type { BaseProperties } from '../types';
+import type { BaseProperties } from '../types.js';
 
 /**
  * Resultat-klikk - trigges når bruker klikker på et søkeresultat
