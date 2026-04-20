@@ -30,7 +30,12 @@ function collectEventFiles(dir) {
 }
 
 function hasSpecifier(content, specifier) {
-  return content.includes(`'${specifier}'`) || content.includes(`"${specifier}"`);
+  return (
+    content.includes(`'${specifier}'`) ||
+    content.includes(`"${specifier}"`) ||
+    content.includes(`'${specifier}.js'`) ||
+    content.includes(`"${specifier}.js"`)
+  );
 }
 
 describe('event exports', () => {
