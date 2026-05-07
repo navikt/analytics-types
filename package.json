@@ -1,6 +1,6 @@
 {
   "name": "@navikt/analytics-types",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "Analytics types for NAV applications",
   "type": "module",
   "main": "./dist/esm/index.js",
@@ -13,7 +13,9 @@
     }
   },
   "scripts": {
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --passWithNoTests",
+    "test": "npm run test:unit && npm run test:types",
+    "test:unit": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --passWithNoTests",
+    "test:types": "tsc -p tsconfig.type-tests.json",
     "build": "tsc -p tsconfig.json",
     "prepublishOnly": "npm test && npm run build"
   },

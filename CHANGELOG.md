@@ -2,6 +2,12 @@
 
 Hold denne filen oppdatert for hver utgivelse. Samle endringer per versjon og beskriv dem kort.
 
+## 0.1.0
+
+- **Nytt**: La til de additive hjelpetypene `AnalyticsMetadata` og `AnalyticsEventData<TName>`.
+- **Tester**: La til type-tester for taksonomi-events, metadata og custom events, inkludert dokumentert tradeoff for metadata på toppnivå.
+- **Dokumentasjon**: Oppdaterte README med anbefalte mønstre for taksonomi, metadata, custom events og personvern.
+
 ## 0.0.7
 
 - **Nytt**: Lagt til nye navigeringshendelser:
