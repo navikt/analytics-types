@@ -636,6 +636,28 @@ export type AmplitudeEvents = EventPropertiesMap;
 export type PropertiesFor<T extends EventName> = EventPropertiesMap[T];
 
 /**
+ * Metadata som kan legges ved analytics-events.
+ *
+ * Verdiene bør være JSON-serialiserbare og må ikke inneholde personopplysninger
+ * eller andre identifikatorer.
+ */
+export type AnalyticsMetadata = Record<string, unknown>;
+
+/**
+ * Hjelpetype for analytics-data som støtter både taksonomi-events og custom events.
+ *
+ * Kjente hendelser beholder feltene fra taksonomien, men kan utvides med metadata.
+ * Ukjente hendelser får et åpent metadata-objekt. Bred `string` og unioner som
+ * også inkluderer custom events gir derfor løsere typing. Bruk konkrete
+ * event-literaler eller `Events.X` når du vil ha sterkest kobling mellom
+ * eventnavn og payload.
+ */
+export type AnalyticsEventData<TName extends string> =
+  TName extends EventName
+    ? PropertiesFor<TName> & AnalyticsMetadata
+    : AnalyticsMetadata;
+
+/**
  * Type-guard som bekrefter at et navn er en gyldig hendelse i taksonomien.
  */
 export function isValidEventName(name: string): name is EventName {

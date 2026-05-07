@@ -1,7 +1,6 @@
 # NAV Analytics Types
 
-
-Type-definisjoner for analytics-hendelser brukt på tvers av Nav sine digitale tjenester. Logg direkte til Umami, eller via `getAnalyticsInstance` fra `@navikt/nav-dekoratoren-moduler`.
+Type-definisjoner for analytics-hendelser brukt på tvers av Nav sine digitale tjenester. Pakken eksporterer både den delte eventtaksonomien og hjelpetypene `AnalyticsMetadata` og `AnalyticsEventData<TName>` for apper som trenger ekstra metadata eller lokale custom events.
 
 ## Installasjon
 
@@ -9,88 +8,125 @@ Type-definisjoner for analytics-hendelser brukt på tvers av Nav sine digitale t
 npm install @navikt/analytics-types
 ```
 
-## Kom i gang
+## Anbefalte bruksmønstre
+
+### 1. Ren taksonomi-event
+
+Bruk taksonomi-eventen direkte når de delte feltene er nok.
 
 ```typescript
-import { Events, type NavigereProperties } from '@navikt/analytics-types';
+import { Events, type AnalyticsEventData } from '@navikt/analytics-types';
 import { getAnalyticsInstance } from '@navikt/nav-dekoratoren-moduler';
 
 const analytics = getAnalyticsInstance('mitt-app-navn');
 
-const properties: NavigereProperties = {
+const eventData: AnalyticsEventData<typeof Events.NAVIGERE> = {
   lenketekst: 'Les mer',
-  destinasjon: '/side/info'
+  destinasjon: '/side/info',
 };
 
-analytics(Events.NAVIGERE, properties);
+analytics(Events.NAVIGERE, eventData);
 ```
 
-## Avansert bruk
+### 2. Taksonomi-event med metadata og `satisfies`
 
-### Lag din egen log-funksjon med `TaxonomyEvent`
-
-```typescript
-import { Events, type TaxonomyEvent, type EventName } from '@navikt/analytics-types';
-import { getAnalyticsInstance } from '@navikt/nav-dekoratoren-moduler';
-
-const analytics = getAnalyticsInstance('mitt-app-navn');
-
-function logTaxonomyEvent<K extends EventName>(event: TaxonomyEvent<K>) {
-  analytics(event.name, event.properties);
-}
-
-logTaxonomyEvent({
-  name: Events.NAVIGERE,
-  properties: {
-    lenketekst: 'Gå til innsending',
-    destinasjon: '/skjema/innsending'
-  }
-});
-```
-
-### Dersom du ønsker å legge til dine egne properties i tillegg:
+Når du trenger ekstra metadata, bør du definere taksonomi-delen først med `satisfies`. Da fanger TypeScript skrivefeil i taksonomi-feltene før metadata legges til.
 
 ```typescript
 import {
   Events,
-  type TaxonomyEvent,
-  isValidEventName
+  type AnalyticsEventData,
+  type PropertiesFor,
 } from '@navikt/analytics-types';
+import { getAnalyticsInstance } from '@navikt/nav-dekoratoren-moduler';
 
 const analytics = getAnalyticsInstance('mitt-app-navn');
 
-type TaxonomyEventWithExtra = TaxonomyEvent & {
-  properties?: TaxonomyEvent['properties'] & Record<string, unknown>;
+const taxonomyData = {
+  tekst: 'Søk',
+  harResultater: true,
+} satisfies PropertiesFor<typeof Events.SOK>;
+
+const eventData: AnalyticsEventData<typeof Events.SOK> = {
+  ...taxonomyData,
+  komponent: 'globalt-søk',
+  resultatkategori: 'artikler',
 };
 
-function logWithExtra(event: TaxonomyEventWithExtra) {
-  analytics(event.name, event.properties);
+analytics(Events.SOK, eventData);
+```
+
+`AnalyticsEventData<typeof Events.X>` tillater metadata på toppnivå. Derfor kan en skrivefeil i et valgfritt taksonomi-felt se ut som metadata. Bruk `satisfies PropertiesFor<typeof Events.X>` når du vil at TypeScript skal fange slike feil.
+
+### 3. Custom event med lokale konstanter eller wrappere
+
+Bruk lokale literal-konstanter eller en wrapper-funksjon for custom events. Da beholder du gode typer i appen din.
+
+```typescript
+import { type AnalyticsEventData } from '@navikt/analytics-types';
+import { getAnalyticsInstance } from '@navikt/nav-dekoratoren-moduler';
+
+const analytics = getAnalyticsInstance('mitt-app-navn');
+
+const CUSTOM_EVENTS = {
+  FEEDBACK_APNET: 'feedback åpnet',
+} as const;
+
+function logCustomEvent<TName extends string>(
+  eventName: TName,
+  eventData?: AnalyticsEventData<TName>,
+) {
+  analytics(eventName, eventData);
 }
 
-logWithExtra({
-  name: Events.SOK,
-  properties: {
-    søkeord: 'økonomi',
-    destinasjon: '/artikler/sok',
-    komponent: 'globalt-søk',
-    kilde: 'intern'
-  }
+logCustomEvent(CUSTOM_EVENTS.FEEDBACK_APNET, {
+  komponent: 'feedback-widget',
+  steg: 2,
+  variant: 'beta',
 });
 ```
 
+Hvis eventnavnet bare er en bred `string`, faller `AnalyticsEventData<string>` tilbake til generell metadata. Bruk derfor helst literal-konstanter eller wrappere når du vil bevare best mulig typesikring.
+
+## Metadata og personvern
+
+`AnalyticsMetadata` er typet som `Record<string, unknown>` for kompatibilitet, men metadata skal være JSON-serialiserbar.
+
+Typiske verdier som er OK:
+
+- `string`
+- `number`
+- `boolean`
+- `null`
+- arrays
+- enkle objekter
+
+Ikke legg dette i metadata:
+
+- fødselsnummer
+- navn
+- e-post
+- telefonnummer
+- saksnummer
+- aktør-ID
+- fritekst fra bruker
+- rå `Error`
+- stacktrace
+- request body
+- response body
+
 ## Tilgjengelige hendelser
 
-Se [src/events](src/events) for en komplett oversikt over alle støttede hendelser og definisjoner.
+Se [src/events](src/events) for en komplett oversikt over støttede hendelser og definisjoner.
 
 ## For bidragsytere
 
 Se [CONTRIBUTING.md](CONTRIBUTING.md) for informasjon om hvordan du:
-- Legger til nye hendelser
-- Kjører tester og bygger prosjektet
-- Publiserer nye versjoner
+
+- legger til nye hendelser
+- kjører tester og bygger prosjektet
+- publiserer nye versjoner
 
 ## Lisens
 
 [MIT](LICENSE)
-
-
