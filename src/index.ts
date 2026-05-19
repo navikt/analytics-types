@@ -383,6 +383,22 @@ export const Events = {
   ALERT_LUKKET: ALERT_LUKKET_EVENT,
   /** Varsel vist */
   ALERT_VIST: ALERT_VIST_EVENT,
+  /** GlobalAlert vist */
+  GLOBALALERT_VIST: GLOBALALERT_VIST_EVENT,
+  /** GlobalAlert lukket */
+  GLOBALALERT_LUKKET: GLOBALALERT_LUKKET_EVENT,
+  /** LocalAlert vist */
+  LOCALALERT_VIST: LOCALALERT_VIST_EVENT,
+  /** LocalAlert lukket */
+  LOCALALERT_LUKKET: LOCALALERT_LUKKET_EVENT,
+  /** Inlinemessage vist */
+  INLINEMESSAGE_VIST: INLINEMESSAGE_VIST_EVENT,
+  /** Infocard vist */
+  INFOCARD_VIST: INFOCARD_VIST_EVENT,
+  /** Process vist */
+  PROCESS_VIST: PROCESS_VIST_EVENT,
+  /** Process steg klikket */
+  PROCESS_STEG_KLIKKET: PROCESS_STEG_KLIKKET_EVENT,
   /** Avkrysningsboks endret */
   AVKRYSNINGSBOKS_ENDRET: AVKRYSNINGSBOKS_ENDRET_EVENT,
   /** Sidebesøk */
