@@ -195,173 +195,89 @@ import { UTVIDBART_KORT_APNET_EVENT } from './events/aksel/expansion-card/utvidb
 import { UTVIDBART_KORT_LUKKET_EVENT } from './events/aksel/expansion-card/utvidbart-kort-lukket.js';
 
 // Importerer event-typer og properties
-import type { AccordionApnetEvent } from './events/aksel/accordion/apnet.js';
 import type { AccordionApnetProperties } from './events/aksel/accordion/apnet.js';
-import type { AccordionLukketEvent } from './events/aksel/accordion/lukket.js';
 import type { AccordionLukketProperties } from './events/aksel/accordion/lukket.js';
-import type { ActionMenuApnetEvent } from './events/aksel/actionmenu/apnet.js';
 import type { ActionMenuApnetProperties } from './events/aksel/actionmenu/apnet.js';
-import type { ActionMenuLukketEvent } from './events/aksel/actionmenu/lukket.js';
 import type { ActionMenuLukketProperties } from './events/aksel/actionmenu/lukket.js';
-import type { ActionMenuValgValgtEvent } from './events/aksel/actionmenu/valg-valgt.js';
 import type { ActionMenuValgValgtProperties } from './events/aksel/actionmenu/valg-valgt.js';
-import type { ActionMenuUndermenyApnetEvent } from './events/aksel/actionmenu/undermeny-apnet.js';
 import type { ActionMenuUndermenyApnetProperties } from './events/aksel/actionmenu/undermeny-apnet.js';
-import type { ActionMenuUndermenyLukketEvent } from './events/aksel/actionmenu/undermeny-lukket.js';
 import type { ActionMenuUndermenyLukketProperties } from './events/aksel/actionmenu/undermeny-lukket.js';
-import type { AlertLukketEvent } from './events/aksel/alert/lukket.js';
 import type { AlertLukketProperties } from './events/aksel/alert/lukket.js';
-import type { AlertVistEvent } from './events/aksel/alert/vist.js';
 import type { AlertVistProperties } from './events/aksel/alert/vist.js';
-import type { GlobalAlertVistEvent } from './events/aksel/globalalert/vist.js';
 import type { GlobalAlertVistProperties } from './events/aksel/globalalert/vist.js';
-import type { GlobalAlertLukketEvent } from './events/aksel/globalalert/lukket.js';
 import type { GlobalAlertLukketProperties } from './events/aksel/globalalert/lukket.js';
-import type { LocalAlertVistEvent } from './events/aksel/localalert/vist.js';
 import type { LocalAlertVistProperties } from './events/aksel/localalert/vist.js';
-import type { LocalAlertLukketEvent } from './events/aksel/localalert/lukket.js';
 import type { LocalAlertLukketProperties } from './events/aksel/localalert/lukket.js';
-import type { InlineMessageVistEvent } from './events/aksel/inlinemessage/vist.js';
 import type { InlineMessageVistProperties } from './events/aksel/inlinemessage/vist.js';
-import type { InfoCardVistEvent } from './events/aksel/infocard/vist.js';
 import type { InfoCardVistProperties } from './events/aksel/infocard/vist.js';
-import type { ProcessVistEvent } from './events/aksel/process/vist.js';
 import type { ProcessVistProperties } from './events/aksel/process/vist.js';
-import type { ProcessStegKlikketEvent } from './events/aksel/process/steg-klikket.js';
 import type { ProcessStegKlikketProperties } from './events/aksel/process/steg-klikket.js';
-import type { AvkrysningsboksEndretEvent } from './events/aksel/checkbox/endret.js';
 import type { AvkrysningsboksEndretProperties } from './events/aksel/checkbox/endret.js';
-import type { BesokEvent } from './events/besok/besok.js';
 import type { BesokProperties } from './events/besok/besok.js';
-import type { ChipFjernetEvent } from './events/aksel/chips/fjernet.js';
 import type { ChipFjernetProperties } from './events/aksel/chips/fjernet.js';
-import type { ChipToggledEvent } from './events/aksel/chips/toggled.js';
 import type { ChipToggledProperties } from './events/aksel/chips/toggled.js';
-import type { ComboboxOptionToggledEvent } from './events/aksel/combobox/option-toggled.js';
 import type { ComboboxOptionToggledProperties } from './events/aksel/combobox/option-toggled.js';
-import type { DatoValgtEvent } from './events/aksel/datepicker/dato-valgt.js';
 import type { DatoValgtProperties } from './events/aksel/datepicker/dato-valgt.js';
-import type { ErrorSummaryVistEvent } from './events/aksel/errorsummary/vist.js';
 import type { ErrorSummaryVistProperties } from './events/aksel/errorsummary/vist.js';
-import type { ErrorSummaryFeilmeldingKlikketEvent } from './events/aksel/errorsummary/feilmelding-klikket.js';
 import type { ErrorSummaryFeilmeldingKlikketProperties } from './events/aksel/errorsummary/feilmelding-klikket.js';
-import type { FaneByttetEvent } from './events/aksel/tabs/fane-byttet.js';
 import type { FaneByttetProperties } from './events/aksel/tabs/fane-byttet.js';
-import type { ToggleGroupValgtEvent } from './events/aksel/togglegroup/valgt.js';
 import type { ToggleGroupValgtProperties } from './events/aksel/togglegroup/valgt.js';
-import type { FilFjernetEvent } from './events/aksel/file-upload/fil-fjernet.js';
 import type { FilFjernetProperties } from './events/aksel/file-upload/fil-fjernet.js';
-import type { FilLastetOppEvent } from './events/aksel/file-upload/fil-lastet-opp.js';
 import type { FilLastetOppProperties } from './events/aksel/file-upload/fil-lastet-opp.js';
-import type { FiltervalgEvent } from './events/filtervalg/filtervalg.js';
 import type { FiltervalgProperties } from './events/filtervalg/filtervalg.js';
-import type { FormProgressStegVistEvent } from './events/aksel/formprogress/steg-vist.js';
 import type { FormProgressStegVistProperties } from './events/aksel/formprogress/steg-vist.js';
-import type { FormProgressStegKlikketEvent } from './events/aksel/formprogress/steg-klikket.js';
 import type { FormProgressStegKlikketProperties } from './events/aksel/formprogress/steg-klikket.js';
-import type { FormSummaryVistEvent } from './events/aksel/formsummary/vist.js';
 import type { FormSummaryVistProperties } from './events/aksel/formsummary/vist.js';
-import type { FormSummaryFeltRedigertEvent } from './events/aksel/formsummary/felt-redigert.js';
 import type { FormSummaryFeltRedigertProperties } from './events/aksel/formsummary/felt-redigert.js';
-import type { GuidepanelVistEvent } from './events/aksel/guidepanel/vist.js';
 import type { GuidepanelVistProperties } from './events/aksel/guidepanel/vist.js';
-import type { HelpTextLukketEvent } from './events/aksel/helptext/lukket.js';
 import type { HelpTextLukketProperties } from './events/aksel/helptext/lukket.js';
-import type { HelpTextVistEvent } from './events/aksel/helptext/vist.js';
 import type { HelpTextVistProperties } from './events/aksel/helptext/vist.js';
-import type { KnappKlikketEvent } from './events/aksel/button/knapp-klikket.js';
 import type { KnappKlikketProperties } from './events/aksel/button/knapp-klikket.js';
-import type { LinkKlikketEvent } from './events/aksel/link/klikket.js';
 import type { LinkKlikketProperties } from './events/aksel/link/klikket.js';
-import type { LinkCardKlikketEvent } from './events/aksel/link-card/klikket.js';
 import type { LinkCardKlikketProperties } from './events/aksel/link-card/klikket.js';
-import type { LastNedEvent } from './events/last-ned/last-ned.js';
 import type { LastNedProperties } from './events/last-ned/last-ned.js';
-import type { PagineringSideValgtEvent } from './events/aksel/pagination/side-valgt.js';
 import type { PagineringSideValgtProperties } from './events/aksel/pagination/side-valgt.js';
-import type { PagineringStorrelseEndretEvent } from './events/aksel/pagination/storrelse-endret.js';
 import type { PagineringStorrelseEndretProperties } from './events/aksel/pagination/storrelse-endret.js';
-import type { PopoverApnetEvent } from './events/aksel/popover/apnet.js';
 import type { PopoverApnetProperties } from './events/aksel/popover/apnet.js';
-import type { PopoverLukketEvent } from './events/aksel/popover/lukket.js';
 import type { PopoverLukketProperties } from './events/aksel/popover/lukket.js';
-import type { LesMerApnetEvent } from './events/aksel/read-more/apnet.js';
 import type { LesMerApnetProperties } from './events/aksel/read-more/apnet.js';
-import type { LesMerLukketEvent } from './events/aksel/read-more/lukket.js';
 import type { LesMerLukketProperties } from './events/aksel/read-more/lukket.js';
-import type { ModalApnetEvent } from './events/aksel/modal/apnet.js';
 import type { ModalApnetProperties } from './events/aksel/modal/apnet.js';
-import type { ModalLukketEvent } from './events/aksel/modal/lukket.js';
 import type { ModalLukketProperties } from './events/aksel/modal/lukket.js';
-import type { MonthPickerManedValgtEvent } from './events/aksel/monthpicker/maned-valgt.js';
 import type { MonthPickerManedValgtProperties } from './events/aksel/monthpicker/maned-valgt.js';
-import type { NavigereEvent } from './events/navigere/navigere.js';
 import type { NavigereProperties } from './events/navigere/navigere.js';
-import type { KopierLenkeEvent } from './events/navigere/kopier-lenke.js';
 import type { KopierLenkeProperties } from './events/navigere/kopier-lenke.js';
-import type { ChatApnetEvent } from './events/navigere/chat-apnet.js';
 import type { ChatApnetProperties } from './events/navigere/chat-apnet.js';
-import type { RingOssEvent } from './events/navigere/ring-oss.js';
 import type { RingOssProperties } from './events/navigere/ring-oss.js';
-import type { VideoStartEvent } from './events/navigere/video-start.js';
 import type { VideoStartProperties } from './events/navigere/video-start.js';
-import type { VideoStoppEvent } from './events/navigere/video-stopp.js';
 import type { VideoStoppProperties } from './events/navigere/video-stopp.js';
-import type { VisFlereTreffEvent } from './events/navigere/vis-flere-treff.js';
 import type { VisFlereTreffProperties } from './events/navigere/vis-flere-treff.js';
-import type { SokNavnoEvent } from './events/navigere/sok.js';
 import type { SokNavnoProperties } from './events/navigere/sok.js';
-import type { ResultatKlikkEvent } from './events/navigere/resultat-klikk.js';
 import type { ResultatKlikkProperties } from './events/navigere/resultat-klikk.js';
-import type { NedtrekkslisteValgEndretEvent } from './events/aksel/select/nedtrekksliste-valg-endret.js';
 import type { NedtrekkslisteValgEndretProperties } from './events/aksel/select/nedtrekksliste-valg-endret.js';
-import type { RadioValgEndretEvent } from './events/aksel/radio/valg-endret.js';
 import type { RadioValgEndretProperties } from './events/aksel/radio/valg-endret.js';
-import type { TabellRadValgtEvent } from './events/aksel/table/rad-valgt.js';
 import type { TabellRadValgtProperties } from './events/aksel/table/rad-valgt.js';
-import type { TabellSorteringEndretEvent } from './events/aksel/table/sortering-endret.js';
 import type { TabellSorteringEndretProperties } from './events/aksel/table/sortering-endret.js';
-import type { TabellFilterAnvendtEvent } from './events/aksel/table/filter-anvendt.js';
 import type { TabellFilterAnvendtProperties } from './events/aksel/table/filter-anvendt.js';
-import type { TabellRadUtvidetEvent } from './events/aksel/table/rad-utvidet.js';
 import type { TabellRadUtvidetProperties } from './events/aksel/table/rad-utvidet.js';
-import type { StepperStegEndretEvent } from './events/aksel/stepper/steg-endret.js';
 import type { StepperStegEndretProperties } from './events/aksel/stepper/steg-endret.js';
-import type { SkjemaApnetEvent } from './events/skjema/apnet.js';
 import type { SkjemaApnetProperties } from './events/skjema/apnet.js';
-import type { SkjemaFullfortEvent } from './events/skjema/fullfort.js';
 import type { SkjemaFullfortProperties } from './events/skjema/fullfort.js';
-import type { SkjemaInnsendingFeiletEvent } from './events/skjema/innsending-feilet.js';
 import type { SkjemaInnsendingFeiletProperties } from './events/skjema/innsending-feilet.js';
-import type { SkjemaSporsmalBesvartEvent } from './events/skjema/sporsmal-besvart.js';
 import type { SkjemaSporsmalBesvartProperties } from './events/skjema/sporsmal-besvart.js';
-import type { SkjemaStartetEvent } from './events/skjema/startet.js';
 import type { SkjemaStartetProperties } from './events/skjema/startet.js';
-import type { SkjemaStegFullfortEvent } from './events/skjema/steg-fullfort.js';
 import type { SkjemaStegFullfortProperties } from './events/skjema/steg-fullfort.js';
-import type { SkjemaValideringFeiletEvent } from './events/skjema/validering-feilet.js';
 import type { SkjemaValideringFeiletProperties } from './events/skjema/validering-feilet.js';
-import type { SokEvent } from './events/aksel/search/sok.js';
 import type { SokProperties } from './events/aksel/search/sok.js';
-import type { SokeforslagValgtEvent } from './events/aksel/search/sokeforslag-valgt.js';
 import type { SokeforslagValgtProperties } from './events/aksel/search/sokeforslag-valgt.js';
-import type { SwitchTilstandEndretEvent } from './events/aksel/switch/tilstand-endret.js';
 import type { SwitchTilstandEndretProperties } from './events/aksel/switch/tilstand-endret.js';
-import type { TagFjernetEvent } from './events/aksel/tag/fjernet.js';
 import type { TagFjernetProperties } from './events/aksel/tag/fjernet.js';
-import type { TekstKopiertEvent } from './events/aksel/copy-button/tekst-kopiert.js';
 import type { TekstKopiertProperties } from './events/aksel/copy-button/tekst-kopiert.js';
-import type { TextareaUtfyltEvent } from './events/aksel/textarea/utfylt.js';
 import type { TextareaUtfyltProperties } from './events/aksel/textarea/utfylt.js';
-import type { TekstfeltUtfyltEvent } from './events/aksel/textfield/tekstfelt-utfylt.js';
 import type { TekstfeltUtfyltProperties } from './events/aksel/textfield/tekstfelt-utfylt.js';
-import type { TooltipLukketEvent } from './events/aksel/tooltip/lukket.js';
 import type { TooltipLukketProperties } from './events/aksel/tooltip/lukket.js';
-import type { TooltipVistEvent } from './events/aksel/tooltip/vist.js';
 import type { TooltipVistProperties } from './events/aksel/tooltip/vist.js';
-import type { UtvidbartKortApnetEvent } from './events/aksel/expansion-card/utvidbart-kort-apnet.js';
 import type { UtvidbartKortApnetProperties } from './events/aksel/expansion-card/utvidbart-kort-apnet.js';
-import type { UtvidbartKortLukketEvent } from './events/aksel/expansion-card/utvidbart-kort-lukket.js';
 import type { UtvidbartKortLukketProperties } from './events/aksel/expansion-card/utvidbart-kort-lukket.js';
 
 export const Events = {
@@ -383,6 +299,22 @@ export const Events = {
   ALERT_LUKKET: ALERT_LUKKET_EVENT,
   /** Varsel vist */
   ALERT_VIST: ALERT_VIST_EVENT,
+  /** GlobalAlert vist */
+  GLOBALALERT_VIST: GLOBALALERT_VIST_EVENT,
+  /** GlobalAlert lukket */
+  GLOBALALERT_LUKKET: GLOBALALERT_LUKKET_EVENT,
+  /** LocalAlert vist */
+  LOCALALERT_VIST: LOCALALERT_VIST_EVENT,
+  /** LocalAlert lukket */
+  LOCALALERT_LUKKET: LOCALALERT_LUKKET_EVENT,
+  /** Inlinemessage vist */
+  INLINEMESSAGE_VIST: INLINEMESSAGE_VIST_EVENT,
+  /** Infocard vist */
+  INFOCARD_VIST: INFOCARD_VIST_EVENT,
+  /** Process vist */
+  PROCESS_VIST: PROCESS_VIST_EVENT,
+  /** Process steg klikket */
+  PROCESS_STEG_KLIKKET: PROCESS_STEG_KLIKKET_EVENT,
   /** Avkrysningsboks endret */
   AVKRYSNINGSBOKS_ENDRET: AVKRYSNINGSBOKS_ENDRET_EVENT,
   /** Sidebesøk */

@@ -2,6 +2,12 @@
 
 Hold denne filen oppdatert for hver utgivelse. Samle endringer per versjon og beskriv dem kort.
 
+## 0.0.10
+
+- **Bugfix**: La til manglende hendelser i `Events`-objektet slik at `*_EVENT`-konstanter nå er konsistente mellom eksport, `Events` og `EventPropertiesMap`.
+- **Refaktorering**: Fjernet ubrukte `...Event` type-importer i `src/index.ts` for å redusere støy og vedlikeholdskost.
+- **Test**: La til ny konsistens-test som verifiserer at alle `*_EVENT` er representert både i `Events` og `EventPropertiesMap`.
+
 ## 0.0.7
 
 - **Nytt**: Lagt til nye navigeringshendelser:
