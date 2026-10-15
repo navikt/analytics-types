@@ -10,11 +10,12 @@ const indexPath = path.join(rootDir, 'src', 'index.ts');
 const indexContent = fs.readFileSync(indexPath, 'utf8');
 
 function getImportedEventConstants(content) {
-  const matches = content.matchAll(
-    /^import \{\s*([A-Z0-9_]+_EVENT)\s*\} from .*$/gm
-  );
+  const importMatches = content.matchAll(/^import\s*\{([^}]*)\}\s*from .*$/gm);
+  const eventConstants = Array.from(importMatches, (match) =>
+    match[1].match(/\b[A-Z0-9_]+_EVENT\b/g) ?? []
+  ).flat();
 
-  return [...new Set(Array.from(matches, (match) => match[1]))];
+  return [...new Set(eventConstants)];
 }
 
 function getEventsObjectBlock(content) {
