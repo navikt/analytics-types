@@ -1,0 +1,41 @@
+name: Release events.json
+
+# Builds the machine-readable taxonomy artifact (events.json) and attaches it
+# to a GitHub Release whenever a version tag is pushed (tags are created by
+# `npm version patch|minor|major` as part of the manual publish flow).
+#
+# Consumers fetch the latest artifact at:
+#   https://github.com/navikt/analytics-types/releases/latest/download/events.json
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release-events-json:
+    name: Build and release events.json
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setting up node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Installing dependencies
+        run: npm ci
+
+      - name: Generate events.json
+        run: npm run generate:events-json
+
+      - name: Attach events.json to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/events.json
+          fail_on_unmatched_files: true

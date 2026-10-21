@@ -13,8 +13,9 @@
     }
   },
   "scripts": {
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --passWithNoTests",
+    "test": "npm run build && cross-env NODE_OPTIONS=--experimental-vm-modules jest --passWithNoTests",
     "build": "tsc -p tsconfig.json",
+    "generate:events-json": "node scripts/generate-events-json.mjs",
     "prepublishOnly": "npm test && npm run build"
   },
   "files": [

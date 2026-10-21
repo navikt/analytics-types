@@ -162,3 +162,4 @@ Dette prosjektet bruker en manuell publiseringsflyt til GitHub Packages.
         ```bash
         git push && git push --tags
         ```
+    *   Når taggen pushes, genererer workflowen `.github/workflows/release-events-json.yml` et GitHub Release med `events.json` (maskinlesbar taksonomi) som vedlegg — tilgjengelig på `https://github.com/navikt/analytics-types/releases/latest/download/events.json`. Verifiser at workflowen blir grønn etter push.

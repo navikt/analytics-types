@@ -82,6 +82,16 @@ logWithExtra({
 
 Se [src/events](src/events) for en komplett oversikt over alle støttede hendelser og definisjoner.
 
+### Maskinlesbar taksonomi (events.json)
+
+Alle hendelser finnes også som en generert JSON-fil for maskinell konsum (dokumentasjon, verktøy, validering):
+
+```
+https://github.com/navikt/analytics-types/releases/latest/download/events.json
+```
+
+Filen bygges fra kildekoden (TypeScript AST, ikke tekst-parsing) og legges ved hvert GitHub-release. Inneholder per hendelse: navn, beskrivelse, kategori, properties (navn, type, valgfri/påkrevd, beskrivelse). Spesifikk versjon: bytt ut `latest` med taggen (f.eks. `download/v0.0.10/events.json`).
+
 ## For bidragsytere
 
 Se [CONTRIBUTING.md](CONTRIBUTING.md) for informasjon om hvordan du:
