@@ -9,6 +9,8 @@ Type-definisjoner for analytics-hendelser brukt på tvers av Nav sine digitale t
 npm install @navikt/analytics-types
 ```
 
+Pakken er offentlig på [npmjs](https://www.npmjs.com/package/@navikt/analytics-types) og krever ingen innlogging. Den publiseres også til Nav sin GitHub Packages-registry for intern bruk.
+
 ## Kom i gang
 
 ```typescript

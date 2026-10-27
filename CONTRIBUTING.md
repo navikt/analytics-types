@@ -91,75 +91,65 @@ npm run build
    - Eksempel på bruk
    - Hvilket team/applikasjon som trenger det
 
-## Publisering til GitHub Packages
+## Publisering
 
-Dette prosjektet bruker en manuell publiseringsflyt til GitHub Packages.
+Pakken publiseres automatisk til to registre når en versjonstag (`v*`) pushes til GitHub. Workflowen `.github/workflows/publish.yml` har to uavhengige jobber:
 
-### Forutsetninger
+| Jobb | Register | Autentisering |
+|---|---|---|
+| `publish-npmjs` | [npmjs](https://www.npmjs.com/package/@navikt/analytics-types) (offentlig) | Trusted publishing (OIDC), ingen token |
+| `publish-github` | GitHub Packages (internt) | `GITHUB_TOKEN` |
 
-1.  **Autentisering mot GitHub Packages** (Engangsoppsett)
-    *   Hvis du ikke allerede har gjort det, må du autentisere deg mot GitHub Packages.
-    *   Opprett en Personal Access Token (PAT) på GitHub med `write:packages`, `read:packages`, og `repo` tilganger.
-    *   Logg inn på npm med din GitHub-bruker:
-        ```bash
-        npm login --scope=@navikt --registry=https://npm.pkg.github.com
-        ```
-        *   **Username:** Ditt GitHub-brukernavn
-        *   **Password:** Din Personal Access Token (PAT)
-        *   **Email:** Din offentlige e-postadresse
-    *   **Merk:** Hvis du allerede har konfigurert din `~/.npmrc` med en auth token for `//npm.pkg.github.com/`, kan du hoppe over dette steget.
+I tillegg bygger `.github/workflows/release-events-json.yml` et GitHub Release med `events.json` (maskinlesbar taksonomi) som vedlegg, tilgjengelig på `https://github.com/navikt/analytics-types/releases/latest/download/events.json`.
 
-### Publiseringsprosess
+Du trenger ingen npm-innlogging eller token for å lage en release. Ikke publiser manuelt.
+
+### Lage en ny release
 
 1.  **Forbered arbeidsområdet**
-    *   Sørg for at du er på `main`-branchen og har de siste endringene:
+    *   Sørg for at du er på `main` med de siste endringene, og at arbeidskatalogen er ren:
         ```bash
         git checkout main
         git pull origin main
         ```
-    *   Sørg for at arbeidskatalogen din er ren (ingen ulagrede endringer).
 
 2.  **Oppdater Changelog**
-    *   Oppdater `CHANGELOG.md` med en oppsummering av endringene i denne releasen.
-    *   Commit endringene i changelog:
+    *   Oppdater `CHANGELOG.md` med en oppsummering av endringene i releasen og commit:
         ```bash
         git add CHANGELOG.md
         git commit -m "docs: Update changelog"
         ```
 
 3.  **Oppdater versjon**
-    *   Kjør `npm version`-kommandoen for å oppdatere `package.json`, opprette en git tag, og committe endringen.
-    *   Velg passende semantisk versjonering:
-        *   **Patch** (Feilrettinger):
-            ```bash
-            npm version patch
-            ```
-        *   **Minor** (Nye funksjoner, bakoverkompatibel):
-            ```bash
-            npm version minor
-            ```
-        *   **Major** (Breaking changes):
-            ```bash
-            npm version major
-            ```
-
-4.  **Verifiser bygg**
-    *   Sørg for at alt bygger og tester passerer før publisering:
+    *   `npm version` oppdaterer `package.json`, committer og oppretter en git-tag. Velg semantisk versjonering:
         ```bash
-        npm run test
-        npm run build
-        ```
-    *   *(Merk: `npm publish` vil også kjøre `prepublishOnly` som utfører disse sjekkene, men det er lurt å verifisere manuelt først)*
-
-5.  **Publiser**
-    *   Publiser pakken til GitHub Registry:
-        ```bash
-        npm publish --registry=https://npm.pkg.github.com/
+        npm version patch   # Feilrettinger
+        npm version minor   # Nye funksjoner, bakoverkompatibelt
+        npm version major   # Breaking changes
         ```
 
-6.  **Push endringer**
-    *   Push de nye commitsene og tagsene til GitHub:
-        ```bash
-        git push && git push --tags
-        ```
-    *   Når taggen pushes, genererer workflowen `.github/workflows/release-events-json.yml` et GitHub Release med `events.json` (maskinlesbar taksonomi) som vedlegg — tilgjengelig på `https://github.com/navikt/analytics-types/releases/latest/download/events.json`. Verifiser at workflowen blir grønn etter push.
+4.  **Push commit og tag**
+    ```bash
+    git push && git push --tags
+    ```
+    *   Push én release om gangen. Tagger som pushes samtidig starter hver sin kjøring, og eldre versjoner feiler fordi nyere versjon allerede er publisert.
+
+5.  **Verifiser**
+    *   Åpne Actions-fanen og sjekk at begge jobbene i «Publish package» og «Release events.json» er grønne.
+    *   Sjekk at versjonen finnes på [npmjs](https://www.npmjs.com/package/@navikt/analytics-types) og har proveniens-merke.
+
+`prepublishOnly` kjører `npm test` og `npm run build` i hver publiseringsjobb, så tester må passere for at noe publiseres.
+
+### Vedlikehold av publiseringsoppsettet
+
+*   **Trusted publisher på npmjs.com** (pakken → Settings → Trusted Publisher) peker på `navikt/analytics-types` og workflowen `publish.yml`. Gi ikke workflowen nytt navn, flytt ikke repoet og fjern ikke `id-token: write` uten å oppdatere trusted publisher. Eksisterende koblinger kan ikke redigeres, bare slettes og opprettes på nytt.
+*   Koblingen må tillate `npm publish`. Ellers avvises publiseringen.
+*   `repository.url` i `package.json` må samsvare nøyaktig med GitHub-repoet.
+*   Pakkens maintainers på npmjs administrerer innstillingene. Sørg for at flere enn én person har tilgang.
+
+### Feilsøking
+
+*   **`You cannot publish over the previously published versions`**: versjonen finnes allerede. Lag en ny versjon med `npm version`.
+*   **`ENEEDAUTH` i npmjs-jobben**: sjekk at filnavnet i trusted publisher er `publish.yml`, og at `npm publish` er tillatt.
+*   **403 i GitHub-jobben**: gi repoet Write-tilgang til pakken under Package settings → Manage Actions access.
+*   **Lokal publisering gikk til feil register**: en `@navikt:registry=...` i `~/.npmrc` overstyrer `--registry`. Bruk bare lokal publisering i nødsfall, og overstyr scopet eksplisitt: `--@navikt:registry=https://registry.npmjs.org/`.
