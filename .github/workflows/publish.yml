@@ -1,0 +1,76 @@
+name: Publish package
+
+# Publishes on version tags (created by `npm version patch|minor|major`) to:
+#   - GitHub Packages (internal, https://npm.pkg.github.com) using GITHUB_TOKEN
+#   - npmjs (public, https://registry.npmjs.org) using npm trusted publishing (OIDC),
+#     which must be configured on npmjs.com for this workflow file.
+# The jobs are independent so a failure in one does not block the other.
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  publish-github:
+    name: Publish to GitHub Packages
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setting up node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@navikt"
+
+      - name: Verify tag matches package.json version
+        run: |
+          PKG_VERSION="v$(node -p "require('./package.json').version")"
+          if [ "$GITHUB_REF_NAME" != "$PKG_VERSION" ]; then
+            echo "Tag $GITHUB_REF_NAME does not match package.json version $PKG_VERSION"
+            exit 1
+          fi
+
+      - name: Installing dependencies
+        run: npm ci
+
+      - name: Publish
+        run: npm publish --registry=https://npm.pkg.github.com/
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  publish-npmjs:
+    name: Publish to npmjs
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setting up node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Verify tag matches package.json version
+        run: |
+          PKG_VERSION="v$(node -p "require('./package.json').version")"
+          if [ "$GITHUB_REF_NAME" != "$PKG_VERSION" ]; then
+            echo "Tag $GITHUB_REF_NAME does not match package.json version $PKG_VERSION"
+            exit 1
+          fi
+
+      - name: Installing dependencies
+        run: npm ci
+
+      - name: Publish
+        run: npm publish --registry=https://registry.npmjs.org/ --provenance --access public
